@@ -14,8 +14,3 @@ The project will be hosted soon so there are no extra steps necessary to install
 ## How to use the project
 The structure of the website as well as the starter functionalities are available for anyone who needs them on Github and will be sequentially updated. Feel free to fork and to add your own spice to this. 
 
-# Add a license
-The most common one is the GPL License which allows other to make modification to your code and use it for commercial purposes. If you need help choosing a license, use check out this link: https://choosealicense.com/
-
-Up to this point what we have covered are the minimum requirements for a good README. But you might also want to consider adding the following sections to make it more eye catching and interactive.
-
