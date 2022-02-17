@@ -1,7 +1,7 @@
 # OVERMORROW
 
 ## Project Description
-Overmorrow or Loomi is a new-gen news site that makes use of the digital medium to create virtual story telling that is in its entirety organically digital. Our achievements as well as our tragedies are portrayed next to each otherand scrolling further down you'll find new and explorable indicators (up to 12) aside from economic growth to track our global well-being and on the bottom you'll find the global vision board compiled of the global goals we as citizens of earth are attempting to reach, giving us all a much clearer direction as to what we want to get out of this life. 
+Overmorrow or Loomi is a new-gen news site that makes use of the digital medium to create virtual story telling that is in its entirety organically digital. Our achievements as well as our tragedies are portrayed next to each other and scrolling further down you'll find new and explorable indicators (up to 20) aside from economic growth to track our global well-being and on the bottom you'll find the global vision board compiled of the global goals we as citizens of earth are attempting to reach, giving us all a much clearer direction as to what we want to get out of this life. 
 
 The technologies to be used will be further refined throughout the course of this project, but I will build this the OG way, by using HTML, CSS, and Javascript for the frontend, as well as Javascript for the backend. It will likely be deployed either with Flask, Heroku, or Netlify. 
 
