@@ -16,7 +16,7 @@ def game_start(user_game_start_input, rand):
 
 # game end function
 def game_end(user_continuation_input):
-    if user_continuation_input == 'No' or user_continuation_input == 'no' or user_continuation_input == 'NO':
+    if user_continuation_input[:2] == 'no':
         return False
     else:
         return True
@@ -32,7 +32,7 @@ while True:
     
         game_start(user_game_start_input, rand)
 
-        user_continuation_input = input('You want to keep going? [Yes/No]\n')
+        user_continuation_input = input('You want to keep going? [Yes/No]\n').lower()
 
         if game_end(user_continuation_input) == False:
             break
