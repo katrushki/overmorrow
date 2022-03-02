@@ -1,4 +1,4 @@
-import random
+import random;
 
 jokes_responses = {
     "country":[
@@ -48,58 +48,86 @@ jokes_responses = {
 }
 
 
-def response(user_command):
-    if user_command == 'all':
-        for joke_bot_message in jokes_responses.values():
-            return joke_bot_message
-    elif user_command == 'random':
-        for joke_bot_message in jokes_responses.values():
-            return random.choice(joke_bot_message)
-    elif user_command in jokes_responses:
-        joke_bot_message = random.choice(jokes_responses[user_command])
+def response(user_com):
+    if user_com == 'all':
+        for joke in jokes_responses.values():
+            for joke_bot_message in joke:
+                print(joke_bot_message)
+    elif user_com == 'random':
+        joke_bot_message = []
+        for joke in jokes_responses.values():
+            joke_bot_message.append(joke)
+        print(random.choice(joke_bot_message))
+    elif user_com in jokes_responses:
+        joke_bot_message = random.choice(jokes_responses[user_com])
+        return joke_bot_message
     else:
-        joke_bot_message = random.choice(jokes_responses["default"])
-    return joke_bot_message
+        print('One last one for the road:')
+        joke_bot_message = jokes_responses["default"]
+        return joke_bot_message
+
 
 def related(user_text):
     if "all" in user_text:
-        user_text_new = "all"
+        user_text_n = "all"
+        return user_text_n
     elif "acting" in user_text:
-        user_text_new = "acting"
+        user_text_n = "acting"
+        return user_text_n
     elif "anatomy" in user_text:
-        user_text_new = "anatomy"
+        user_text_n = "anatomy"
+        return user_text_n
     elif "astronauts" in user_text:
-        user_text_new = "astronauts"
+        user_text_n = "astronauts"
+        return user_text_n
     elif "batman" in user_text:
-        user_text_new = "batman"
+        user_text_n = "batman"
+        return user_text_n
     elif "cooking" in user_text:
-        user_text_new = "cooking"
+        user_text_n = "cooking"
+        return user_text_n
     elif "country" in user_text:
-        user_text_new = "country"
+        user_text_n = "country"
+        return user_text_n
     elif "daily" in user_text:
-        user_text_new = "daily"
+        user_text_n = "daily"
+        return user_text_n
     elif "hipster" in user_text:
-        user_text_new = "hipster"
+        user_text_n = "hipster"
+        return user_text_n
     elif "karma" in user_text:
-        user_text_new = "karma"
+        user_text_n = "karma"
+        return user_text_n
     elif "math" in user_text:
-        user_text_new = "math"
+        user_text_n = "math"
+        return user_text_n
     elif "pirates" in user_text:
-        user_text_new = "pirates"
+        user_text_n = "pirates"
+        return user_text_n
     elif "random" in user_text:
-        user_text_new = "random"
+        user_text_n = "random"
+        return user_text_n
     elif "science" in user_text:
-        user_text_new = "science"
-    return user_text_new
+        user_text_n = "science"
+        return user_text_n
+    else:
+        user_text_n = ""
+        return user_text_n
 
-print("""
-Joke Bot: Hello there! 
-Please enter "all" if you want all jokes to be displayed,
-"random" for a random joke or one of the following categories for a more specific joke: 
-acting, anatomy, animals, astronauts, batman, cooking, country, daily, hipster, karma, math, pirates, science .
-\nYou:""")
-user_command = str(input()).lower()
-user_text = related(user_command)
 
-print(response(user_text))
+while True:
+    print("""
+    Joke Bot: Hello! 
+
+    Please enter "all" if you want all jokes to be displayed,
+    "random" for a random joke or one of the following categories for a more specific joke: 
+    acting, anatomy, animals, astronauts, batman, cooking, country, daily, hipster, karma, math, pirates, science .
+    If you want to stop then please enter "exit" or "stop".
+    \nYou:""")
+    user_command = str(input()).lower()
+    user_text = related(user_command)
+
+    print(response(user_text))
+    if user_command =="exit" or user_command == "stop":
+        break
 
