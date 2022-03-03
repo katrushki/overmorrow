@@ -1,0 +1,51 @@
+body {
+    background: #FFFFFF
+
+};
+
+h1 {
+    position: absolute;
+    width: 393px;
+    height: 231px;
+    left: 77px;
+    top: 205px;
+
+    font-family: Barlow Condensed;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 64px;
+    line-height: 77px;
+
+    color: #000000;
+};
+
+p {
+    position: absolute;
+    width: 393px;
+    height: 102px;
+    left: 77px;
+    top: 458px;
+
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: justify;
+
+    color: #000000;
+
+
+};
+
+.nav-area {
+    position: absolute;
+    width: 1440px;
+    height: 100px;
+    left: 0px;
+    top: 0px;
+
+    background: rgba(255, 255, 255, 0.097);
+    box-shadow: inset 10.2733px -10.2733px 10.2733px rgba(208, 208, 208, 0.394), inset -10.2733px 10.2733px 10.2733px rgba(255, 255, 255, 0.394);
+    backdrop-filter: blur(246.56px);
+};
