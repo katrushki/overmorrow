@@ -14,7 +14,7 @@ class Player:
     def description(self):
         print(f"{self.name} is the player in this game!")
 
-player = Player(5, 40, 'Eren Jäger')
+player = Player(40, 5, 'Eren Jäger')
 
 class Titan:
     def __init__(self, hp, maxD, name):
@@ -47,52 +47,63 @@ def typo(type):
     print(error)
 
 def game(player, titan):
-    while player.health >=0 and titan.health >=0:
+    while player.hp >=0 and titan.hp >=0:
         game_turn = 'player'
         player_defend = False
+        titan_is_dead = False
+
 
         while game_turn == 'player':
-            input = str(input(f'''Ready for your  opponent? It is the titan, {titan.name}, that attacked the survey corps on their way to Shiganshina. 
-                                Are you going to "attack" or "defend" from {titan.name}?''').lower())
-            if input == 'help':
+            game_input = input(f'''
+            Ready for your  opponent? It is the titan, {titan.name}, that attacked the survey corps on their way to Shiganshina. 
+            Are you going to "attack" or "defend" from {titan.name}?''')
+            
+            if game_input == 'help':
                 help()
                 continue
 
-            elif input == 'attack':
+            elif game_input == 'attack':
                 player_damage = player.maxD
-                titan.health -= player_damage
-                print(f"You just attacked {titan.name} and dealt {player_damage} damage! {titan.name} has {titan.health} HP left")
+                titan.hp -= player_damage
+                print(f"\nYou just attacked {titan.name} and dealt {player_damage} damage! {titan.name} has {titan.hp} HP left")
+                game_turn = 'titan'
 
-            elif input == 'defend':
+            elif game_input == 'defend':
+                titan_damage = titan.maxD /2
+                player.hp -= titan_damage
                 player_defend = True
+                game_turn = 'titan'
+
+
+            elif game_input == 'quit':
+                break
 
             else:
                 typo('typo')
                 continue
 
-        if player.health <= 0:
+        if player.hp <= 0:
             print("You've been bested. The game is over. Humankind is lost.")
             break
 
-        titan_is_dead = False
-
-        if titan.health <= 0:
+        elif titan.hp <= 0:
             print(f"You have won against {titan.name} the titan! Hurray!")
             titan_is_dead = True
             break
 
-        if titan_is_dead == False:
-            while turn == 'titan':
+        elif titan_is_dead == False:
+
+            while game_turn == 'titan':
                 if player_defend == False:
-                    titan_damage = titan.attack
+                    titan_damage = titan.maxD
                 else:
                     titan_damage = titan.maxD / 2
-                player.health -= titan_damage
+                player.hp -= titan_damage
 
                 message_titan = str(titan_damage)
-                message_player = str(player.health)
-                print(f"The monster did {titan_damage} damage! You have {player.health} HP left.")
-                turn = 'player'
+                message_player = str(player.hp)
+                print(f"The monster did {message_titan} damage! You have {message_player} HP left.")
+                game_turn = 'player'
 
 
 print("""Welcome to Attack on Titans. 
@@ -112,13 +123,13 @@ The game is lost if the player dies. The game is won if all opponents have been 
 If you are ready to start type 'start'.
 """)
 
-user_start = input().lower()
+user_start = input()
 
 if user_start == 'start':
-    pass
     game(player, annie_titan)
 else:
     print('I am sorry, this command does not work. Please enter "start" to begin.')
+    continue
 
 print("""It is time for round number two""")
 
