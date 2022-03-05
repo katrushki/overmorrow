@@ -1,13 +1,99 @@
 import random
-import re
 
 
-# Simulating the flow of the game
+# Setting the flow of the game
 
+# Player and Titan class
 # Player: Eren - human that can transform into a titan 40 HP and max damage of 5
+class Player:
+    def __init__(self, hp, maxD, name):
+        self.hp = hp
+        self.maxD = random.randint(1, maxD)
+        self.name = name
+
+    def description(self):
+        print(f"{self.name} is the player in this game!")
+
+player = Player(5, 40, 'Eren Jäger')
+
+class Titan:
+    def __init__(self, hp, maxD, name):
+        self.hp = hp
+        self.maxD = random.randint(1, maxD)
+        self.name = name
+
+    def description(self):
+        print(f"{self.name} the titan is your opponent. She has {self.hp} HP and can deal {self.maxD} damage.")
+
 # Enemy 1: Annie - female titan with 5 HP and a max damage of 2
+annie_titan = Titan(5,2,'Annie')
 # Enemy 2: Rainer - armoured titan with 10 HP and a max damage of 4
+rainer_titan = Titan(10, 4, 'Rainer')
 # Enemy 3: Berhold - giant titan with 20 HP and a max damage of 6
+berthold_titan = Titan(20, 6, 'Berthold')
+
+def help():
+    print("""You can use the following commands: \n
+    'attack': attacks the enemy
+    'defend': defends an attack and halves the damage
+    """)
+
+def typo(type):
+    type_error = ["Nope that won't work", "Please try again", "There seems to be a type. Try again, please.", "I did not quite catch that. Could you try again?"]
+
+    if type == 'typo':
+        error = random.choice(type_error)
+
+    print(error)
+
+def game(player, titan):
+    while player.health >=0 and titan.health >=0:
+        game_turn = 'player'
+        player_defend = False
+
+        while game_turn == 'player':
+            input = str(input(f'''Ready for your  opponent? It is the titan, {titan.name}, that attacked the survey corps on their way to Shiganshina. 
+                                Are you going to "attack" or "defend" from {titan.name}?''').lower())
+            if input == 'help':
+                help()
+                continue
+
+            elif input == 'attack':
+                player_damage = player.maxD
+                titan.health -= player_damage
+                print(f"You just attacked {titan.name} and dealt {player_damage} damage! {titan.name} has {titan.health} HP left")
+
+            elif input == 'defend':
+                player_defend = True
+
+            else:
+                typo('typo')
+                continue
+
+        if player.health <= 0:
+            print("You've been bested. The game is over. Humankind is lost.")
+            break
+
+        titan_is_dead = False
+
+        if titan.health <= 0:
+            print(f"You have won against {titan.name} the titan! Hurray!")
+            titan_is_dead = True
+            break
+
+        if titan_is_dead == False:
+            while turn == 'titan':
+                if player_defend == False:
+                    titan_damage = titan.attack
+                else:
+                    titan_damage = titan.maxD / 2
+                player.health -= titan_damage
+
+                message_titan = str(titan_damage)
+                message_player = str(player.health)
+                print(f"The monster did {titan_damage} damage! You have {player.health} HP left.")
+                turn = 'player'
+
 
 print("""Welcome to Attack on Titans. 
 An attack defend/game based on Season 1 of the namesake anime. 
@@ -26,19 +112,19 @@ The game is lost if the player dies. The game is won if all opponents have been 
 If you are ready to start type 'start'.
 """)
 
-user_start = input().lower
+user_start = input().lower()
 
 if user_start == 'start':
-    print('''Ready for your first opponent? It is the female titan, Annie, that attacked the survey corps on their way to Shiganshina. 
-    Are you going to "attack" or "defend" from Annie?''')
-    user_input = input().lower()
-    if user_input != 'attack' or user_input != 'defend':
-        print("What you have entered is not a valid command. Please try again")
-    
-    while hp_titan >= 0 and hp_player >= 0:
-        if user_input == 'attack':
-            print(f"You just attacked the female titan and dealt {damage_dealt_player} and the female titan's HP is down to {hp_titan}")
-            pass # damage will be a random number between 1 and 5
-        elif user_input == 'defend':
-            print (f"The female titan dealt a ferocious blow of {damage_dealt_titan} and your HP is down to {hp_player}")
-            pass
+    pass
+    game(player, annie_titan)
+else:
+    print('I am sorry, this command does not work. Please enter "start" to begin.')
+
+print("""It is time for round number two""")
+
+
+
+print()
+game(player, rainer_titan)
+
+game(player, berthold_titan)
