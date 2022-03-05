@@ -122,9 +122,8 @@ else:
 
 print("""It is time for round number two""")
 
-
-
-print()
 game(player, rainer_titan)
+
+print("""It is time for round number three""")
 
 game(player, berthold_titan)
