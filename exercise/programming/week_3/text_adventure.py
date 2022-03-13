@@ -129,7 +129,6 @@ if user_start == 'start':
     game(player, annie_titan)
 else:
     print('I am sorry, this command does not work. Please enter "start" to begin.')
-    continue
 
 print("""It is time for round number two""")
 
